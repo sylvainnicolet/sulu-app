@@ -1,0 +1,25 @@
+<nav class="bg-orange-500">
+	<ul class="container mx-auto py-4">
+		<li>
+			<a href="{{ sulu_content_root_path() }}">Accueil</a>
+		</li>
+		
+		{% for item in sulu_navigation_root_tree('main') %}
+			<li>
+				<a
+					href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+					title="{{ item.title }}"
+				>
+					{{ item.title }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>
+
+{#<form action="{{ path('sulu_search.website_search') }}" method="GET">#}
+{#	<label>#}
+{#		<input name="q" type="text" placeholder="Search"/>#}
+{#	</label>#}
+{#	<input type="submit" value="Go"/>#}
+{#</form>#}

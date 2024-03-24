@@ -18,38 +18,20 @@
 	    {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
-<body>
+<body class="flex min-h-screen flex-col">
     <header>
         {% block header %}
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ sulu_content_root_path() }}">Homepage</a>
-                    </li>
-
-                    {% for item in sulu_navigation_root_tree('main') %}
-                        <li>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
+	        {% include "components/header.html.twig" %}
         {% endblock %}
     </header>
 
-    <form action="{{ path('sulu_search.website_search') }}" method="GET">
-        <input name="q" type="text" placeholder="Search"/>
-        <input type="submit" value="Go"/>
-    </form>
-
-    <main>
+    <main class="flex-1">
         {% block content %}{% endblock %}
     </main>
 
     <footer>
         {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+            {% include "components/footer.html.twig" %}
         {% endblock %}
     </footer>
 
